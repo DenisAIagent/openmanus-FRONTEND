@@ -1,0 +1,237 @@
+/* MDMC Neura Orkestra - Responsive Styles */
+
+/* Sidebar Responsive */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 240px;
+  }
+  
+  .main-content {
+    margin-left: 240px;
+  }
+  
+  .nav-label {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-layout {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: var(--spacing-4);
+  }
+  
+  .sidebar-nav {
+    display: none;
+  }
+  
+  .sidebar-logo {
+    margin-bottom: 0;
+  }
+  
+  .main-content {
+    margin-left: 0;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+  }
+  
+  .mobile-nav-overlay.active {
+    display: block;
+  }
+  
+  .mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    background-color: var(--background-darker);
+    z-index: 101;
+    transform: translateX(-100%);
+    transition: transform var(--transition-normal);
+    padding: var(--spacing-6);
+    overflow-y: auto;
+  }
+  
+  .mobile-nav.active {
+    transform: translateX(0);
+  }
+}
+
+/* Dashboard Responsive */
+@media (max-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-4);
+  }
+  
+  .welcome-section,
+  .stats-section,
+  .charts-section,
+  .activity-section,
+  .chat-section,
+  .actions-section {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .welcome-section,
+  .stats-section,
+  .charts-section,
+  .activity-section,
+  .chat-section,
+  .actions-section {
+    grid-column: span 1;
+  }
+  
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-4);
+  }
+  
+  .header-tagline h2 {
+    font-size: 1.2rem;
+  }
+  
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .welcome-card {
+    flex-direction: column;
+  }
+  
+  .welcome-illustration {
+    display: none;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .chart-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-3);
+  }
+  
+  .actions-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .chart-metrics,
+  .chart-period {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: var(--spacing-2);
+  }
+  
+  .input-suggestions {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: var(--spacing-2);
+  }
+  
+  .suggestion-chip {
+    flex-shrink: 0;
+  }
+}
+
+/* Accessibility Enhancements */
+:focus {
+  outline: 2px solid var(--mdmc-red);
+  outline-offset: 2px;
+}
+
+.btn:focus,
+.nav-link:focus,
+.input:focus {
+  box-shadow: 0 0 0 3px rgba(230, 30, 37, 0.3);
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --mdmc-red: #ff0000;
+    --white: #ffffff;
+    --gray-400: #999999;
+    --gray-600: #666666;
+    --gray-800: #333333;
+    --background-dark: #000000;
+    --background-darker: #000000;
+    --background-lighter: #222222;
+  }
+  
+  .btn,
+  .card,
+  .nav-item,
+  .input {
+    border: 1px solid var(--white);
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .card:hover {
+    transform: none;
+  }
+  
+  .btn:hover {
+    transform: none;
+  }
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

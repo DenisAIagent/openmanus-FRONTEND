@@ -1,0 +1,217 @@
+/* MDMC Neura Orkestra - Accessibility Enhancements */
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--mdmc-red);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Skip to content link for keyboard users */
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-to-content:focus {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  padding: var(--spacing-4);
+  background-color: var(--background-darker);
+  color: var(--white);
+  z-index: 9999;
+  border: 2px solid var(--mdmc-red);
+  border-radius: 0 0 var(--radius-md) 0;
+}
+
+/* Keyboard navigation improvements */
+.btn:focus-visible,
+.nav-link:focus-visible,
+.input:focus-visible {
+  box-shadow: 0 0 0 3px rgba(230, 30, 37, 0.3);
+}
+
+/* ARIA attributes for interactive elements */
+[role="button"],
+[role="tab"],
+[role="menuitem"] {
+  cursor: pointer;
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .card:hover {
+    transform: none;
+  }
+  
+  .btn:hover {
+    transform: none;
+  }
+  
+  .loading-spinner {
+    animation: none !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --mdmc-red: #ff0000;
+    --white: #ffffff;
+    --gray-400: #999999;
+    --gray-600: #666666;
+    --gray-800: #333333;
+    --background-dark: #000000;
+    --background-darker: #000000;
+    --background-lighter: #222222;
+  }
+  
+  .btn,
+  .card,
+  .nav-item,
+  .input {
+    border: 1px solid var(--white);
+  }
+  
+  .login-title {
+    -webkit-text-fill-color: var(--white);
+  }
+}
+
+/* Improved form accessibility */
+.input-group {
+  margin-bottom: var(--spacing-6);
+}
+
+.input-label {
+  display: block;
+  margin-bottom: var(--spacing-2);
+  font-weight: 500;
+}
+
+.input {
+  width: 100%;
+  padding: var(--spacing-3) var(--spacing-4);
+  background-color: var(--gray-800);
+  border: 1px solid var(--gray-700);
+  border-radius: var(--radius-md);
+  color: var(--white);
+  transition: border-color var(--transition-fast);
+}
+
+.input:focus {
+  border-color: var(--mdmc-red);
+  outline: none;
+}
+
+/* Form validation and error states */
+.input.error {
+  border-color: #ff3b30;
+}
+
+.error-message {
+  color: #ff3b30;
+  font-size: 0.85rem;
+  margin-top: var(--spacing-1);
+}
+
+/* Tooltip for additional information */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 200px;
+  background-color: var(--background-darker);
+  color: var(--white);
+  text-align: center;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-3);
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--gray-700);
+}
+
+.tooltip:hover .tooltip-text,
+.tooltip:focus .tooltip-text,
+.tooltip:focus-within .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Keyboard accessible dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: var(--background-darker);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--gray-700);
+  z-index: 100;
+  min-width: 180px;
+}
+
+.dropdown.active .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-3) var(--spacing-4);
+  color: var(--white);
+  transition: background-color var(--transition-fast);
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: var(--gray-800);
+  color: var(--white);
+}
+
+.dropdown-divider {
+  height: 1px;
+  background-color: var(--gray-700);
+  margin: var(--spacing-1) 0;
+}
